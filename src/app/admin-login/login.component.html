@@ -1,0 +1,55 @@
+<section class="section">
+  <app-navbar></app-navbar>
+  <div class="main">
+<div class="adminLogin">
+  <div>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="logoap">
+        <img class="logoimg" src="../../../../assets/logo.png" alt="logo" />
+      </div>
+
+      
+      <div class="radio">
+        <div>
+          <input type="radio" id="Agent" formControlName="role" value="agent">
+          <label for="Agent">Agent</label><br>
+        </div>
+        <div>
+          <input type="radio" id="DC" formControlName="role" value="dc">
+          <label for="DC">DC</label><br>
+        </div>
+        <div>
+          <input type="radio" id="EHO" formControlName="role" value="eo">
+          <label for="EHO">EO</label><br>
+        </div>
+      </div>
+
+      
+      <div class="flex-column">
+        <label for="complaintId">Employee ID</label>
+      </div>
+      <div class="inputForm">
+        <input type="text" class="input" id="complaintId" formControlName="complaintId" placeholder="Enter your Complaint ID">
+      </div>
+      <div class="error-message" *ngIf="loginForm.get('complaintId')?.touched && loginForm.get('complaintId')?.invalid">
+        <div *ngIf="loginForm.get('complaintId')?.errors?.['required']">Employee ID is required</div>
+      </div>
+
+      <div class="flex-column">
+        <label for="password">Password</label>
+      </div>
+      <div class="inputForm">
+        <input type="password" class="input" id="password" formControlName="password" placeholder="Enter your Password">
+      </div>
+      <div class="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+      </div>
+
+      <button type="submit" class="button-submit" [disabled]="!loginForm.valid">Login</button>
+
+    </form>
+  </div>
+</div>
+</div>
+<app-footer></app-footer>
+</section>

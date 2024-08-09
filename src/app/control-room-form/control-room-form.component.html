@@ -1,0 +1,119 @@
+<section class="section">
+<app-navbar></app-navbar>
+<div class="mainform-control">
+  <form [formGroup]="controlRoomForm" (ngSubmit)="onSubmit()" class="form-control">
+    <div class="form-title-control">
+      <h1 class="gradient-text">Control Room Form</h1>
+    </div>
+
+    <div class="top-data-display control-room-data">
+      <diV>
+      <p><strong>Complaint ID :</strong> {{ controlRoomForm.get('complaintId')?.value }}</p>
+      <p><strong>Complaint Source :</strong> {{ controlRoomForm.get('complaintSource')?.value }}</p>
+      <p><strong>Complaint Name :</strong> {{ controlRoomForm.get('complaintName')?.value }}</p>
+      <p><strong>District :</strong> {{ controlRoomForm.get('district')?.value }}</p>
+      <p><strong>Mandal :</strong> {{ controlRoomForm.get('mandal')?.value }}</p>
+    </diV>
+    <div>
+      <p><strong>Village :</strong> {{ controlRoomForm.get('village')?.value }}</p>
+      <p><strong>Complaint Details :</strong> {{ controlRoomForm.get('complaintDetails')?.value }}</p>
+      <p><strong>Attachments :</strong> {{ controlRoomForm.get('attachments')?.value }}</p>
+      <p><strong>Time Stamp :</strong> {{ controlRoomForm.get('timeStamp')?.value }}</p>
+    </div>
+  </div>
+    <div class="form-row">
+      <div class="form-column-control">
+        <div class="form-group">
+          <div class="input-container-control">
+                <div class="fields-control">
+                  <label>Status</label>
+                  <select formControlName="status">
+                    <option *ngFor="let status of statusOptions" [value]="status">
+                      {{ status }}
+                    </option>
+                  </select>
+                  <div *ngIf="controlRoomForm.get('status')?.touched && controlRoomForm.get('status')?.invalid" class="error-message">
+                    Status is required
+                  </div>
+                </div>
+                <div class="fields-control">
+                  <label>Reason</label>
+                  <select formControlName="reason">
+                    <option *ngFor="let reason of reasonOptions" [value]="reason">
+                      {{ reason }}
+                    </option>
+                  </select>
+                  <div *ngIf="controlRoomForm.get('reason')?.touched && controlRoomForm.get('reason')?.invalid" class="error-message">
+                    Reason is required when status is invalid
+                  </div>
+                </div>
+                <div class="fields-control">
+                  <label>Complaint Type</label>
+                  <select formControlName="complaintType">
+                    <option *ngFor="let type of complaintTypeOptions" [value]="type">
+                      {{ type }}
+                    </option>
+                  </select>
+                  <div *ngIf="controlRoomForm.get('complaintType')?.touched && controlRoomForm.get('complaintType')?.invalid" class="error-message">
+                    Complaint Type is required
+                  </div>
+                </div>
+                <div class="fields-control" *ngIf="controlRoomForm.get('complaintType')?.value === 'A4 Shop Violation'">
+                  <label>A4 Shop Violation</label>
+                  <select formControlName="a4ShopViolation">
+                    <option *ngFor="let option of a4ShopViolationOptions" [value]="option">
+                      {{ option }}
+                    </option>
+                  </select>
+                  <div *ngIf="controlRoomForm.get('a4ShopViolation')?.touched && controlRoomForm.get('a4ShopViolation')?.invalid" class="error-message">
+                    A4 Shop Violation details are required
+                  </div>
+                </div>
+                <div class="fields-control" *ngIf="controlRoomForm.get('complaintType')?.value === '2B Violation'">
+                  <label>2B Violation</label>
+                  <select formControlName="twoBViolation">
+                    <option *ngFor="let option of twoBViolationOptions" [value]="option">
+                      {{ option }}
+                    </option>
+                  </select>
+                  <div *ngIf="controlRoomForm.get('twoBViolation')?.touched && controlRoomForm.get('twoBViolation')?.invalid" class="error-message">
+                    2B Violation details are required
+                  </div>
+                </div>
+                <div class="fields-control">
+                  <label>Assigned To</label>
+                  <select formControlName="assignedTo">
+                    <option *ngFor="let assign of assignedToOptions" [value]="assign.value">
+                      {{ assign.label }}
+                    </option>
+                  </select>
+                  <div *ngIf="controlRoomForm.get('assignedTo')?.touched && controlRoomForm.get('assignedTo')?.invalid" class="error-message">
+                    Assigned To is required
+                  </div>
+                </div>
+                <div class="fields-control">
+                  <label>ATR Preliminary Submitted</label>
+                  <input matInput formControlName="atr" placeholder="ATR details if any">
+                </div>
+                <div class="fields-control">
+                  <label>ATR Upload</label>
+                  <input type="file" matInput formControlName="atrUpload">
+                </div>
+                <div class="fields-control">
+                  <label>Feedback</label>
+                  <textarea matInput formControlName="feedback" rows="2"></textarea>
+                  <div *ngIf="controlRoomForm.get('feedback')?.touched && controlRoomForm.get('feedback')?.invalid" class="error-message">
+                    Feedback is required
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button  type="submit" class="AtrButton-control">Submit</button>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>
+</section>

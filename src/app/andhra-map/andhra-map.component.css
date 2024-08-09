@@ -1,0 +1,28 @@
+.map-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#andhra-map {
+  width: 100%;
+  max-width: 500px;
+}
+
+.map-region {
+  fill: #4CAF50;
+  stroke: #000;
+  stroke-width: 2;
+  animation: fillAnimation 5s infinite alternate;
+}
+
+@keyframes fillAnimation {
+  0% {
+    fill: #4CAF50;
+  }
+  100% {
+    fill: #FFC107;
+  }
+}

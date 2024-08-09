@@ -1,0 +1,25 @@
+.section{
+    width: 100%;
+    background-color: burlywood;
+    padding: 0;
+    margin: 0;
+}
+.topBarMain{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding-block: 18px;
+}
+.content{
+    display: flex;
+    gap: 10px;
+    
+}
+.content p{
+    font-size: 16px;
+}
+.content i{
+    padding-top: 5px;
+}

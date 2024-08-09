@@ -1,0 +1,79 @@
+<section class="section">
+  <app-navbar></app-navbar>
+  <div class="dcMain">
+<div class="title">
+    <h1>DC DASHBOARD</h1>
+  </div>
+  
+  <div class="complaint-button-container">
+    <!-- <button class="btns" (click)="showComplaints()">List of Complaints</button> -->
+    <button class="btns" [ngClass]="{ 'clicked': dcFormClicked }" (click)="navigateToDCForm()">DC Form</button>
+    <button class="btns" (click)="logout()">Logout</button>
+  </div>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>S.NO</th>
+          <th>Complaint ID</th>
+          <th>Name</th>
+          <th>District</th>
+          <th>Mandal</th>
+          <th>Village</th>
+          <th>Details</th>
+          <th>Status</th>
+          <th>Assigned To</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let complaint of complaints; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ complaint.id }}</td>
+          <td>{{ complaint.name }}</td>
+          <td>{{ complaint.district }}</td>
+          <td>{{ complaint.mandal }}</td>
+          <td>{{ complaint.village }}</td>
+          <td>{{ complaint.details }}</td>
+          <td>{{ complaint.status }}</td>
+          <td>{{ complaint.assignedTo }}</td>
+          <td>
+            <span (click)="toggleActionButtons(complaint)" style="cursor: pointer;">
+              <i class="fa fa-bars"></i>
+            </span>
+            <div *ngIf="complaint.showActions" class="action-buttons">
+              <select [(ngModel)]="complaint.assignedTo">
+                <option *ngFor="let option of assignedToOptions" [value]="option.value">{{ option.label }}</option>
+              </select>
+              <button (click)="assignComplaint(complaint, complaint.assignedTo)">Assign</button>
+              <!-- <button class="delete-button" (click)="deleteComplaint(complaint)">Delete</button> -->
+              <button class="view-button" (click)="viewComplaint(complaint)">View</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <app-footer></app-footer>
+  </section>
+  
+  <!-- Modal -->
+  <div *ngIf="modalVisible && selectedComplaint" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Complaint Details</h2>
+      <div>
+        <p><strong>Complaint ID:</strong> {{ selectedComplaint.id }}</p>
+        <p><strong>Name:</strong> {{ selectedComplaint.name }}</p>
+        <p><strong>District:</strong> {{ selectedComplaint.district }}</p>
+        <p><strong>Mandal:</strong> {{ selectedComplaint.mandal }}</p>
+        <p><strong>Village:</strong> {{ selectedComplaint.village }}</p>
+        <p><strong>Details:</strong> {{ selectedComplaint.details }}</p>
+        <p><strong>Status:</strong> {{ selectedComplaint.status }}</p>
+        <p><strong>Assigned To:</strong> {{ selectedComplaint.assignedTo }}</p>
+      </div>
+    </div>
+  </div>
+  

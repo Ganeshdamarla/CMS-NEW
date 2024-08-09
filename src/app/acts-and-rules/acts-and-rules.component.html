@@ -1,0 +1,19 @@
+<section class="section">
+<app-navbar></app-navbar>
+<div class="acts-and-rules-container">
+    <h1>Acts and Rules</h1>
+    <div *ngFor="let item of actsAndRules" class="acts-card">
+      <div class="acts-card-header" (click)="toggleDescription(item)">
+        <div class="acts-card-title">{{ item.title }}</div>
+        <div class="acts-card-subtitle">{{ item.date | date: 'longDate' }}</div>
+      </div>
+      <div class="acts-card-content" *ngIf="item.showDescription">
+        <p>{{ item.description }}</p>
+      </div>
+      <div class="acts-card-actions">
+        <a class="button" [href]="item.pdfLink" target="_blank">Read More</a>
+      </div>
+    </div>
+  </div>
+  <app-footer> </app-footer>
+</section>

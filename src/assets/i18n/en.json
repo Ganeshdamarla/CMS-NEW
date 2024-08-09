@@ -1,0 +1,50 @@
+{
+  "navbar": {
+    "home": "Home",
+    "acts & Rules": "Acts & Rules",
+    "dashboard": "Dashboard",
+    "contactUs": "Contact Us",
+    "login": "Login",
+    "user": "User",
+    "admin": "Admin",
+    "telugu": "తెలుగు"
+  },
+  "carousel": {
+    "heading1": "ANDHRA PRADESH",
+    "heading2": "PROHIBITION & EXCISE DEPARTMENT",
+    "registerButton": "Register a Complaint"
+  },
+  "latestNews": {
+    "header": "Latest News"
+  },
+  
+    "aboutUs": {
+      "title": "About Us",
+      "description1": "Prohibition & Excise Department deals with regulation of production, manufacture, possession, transport, purchase and sale of intoxicating liquor and drugs, the levy of duties of excise and countervailing duties on alcoholic liquors for human consumption and opium, Indian hemp and other narcotic drugs and narcotics and matters connected therewith in the State of Andhra Pradesh.",
+      "description2": "Prohibition & Excise Department plays the dual role of enforcing prohibition of country liquor/Illicit Distilled Liquor (Arrack) and procuring revenue through regulation of Indian Made Foreign Liquor (IMFL), Foreign Liquor (FL) and Toddy. The department, along with other State and Central Government agencies also enforces the law relating to Narcotic Drugs and Psychotropic Substances. Excise Revenue is the second largest source of revenue to the Government of Andhra Pradesh.",
+      "functions": {
+        "title": "Functions",
+        "item1": "Regulating the Production, Manufacture, Possession, Transport, Import, Export, Purchase and Sale of Liquor (wholesale trade of liquor)",
+        "item2": "Control of Excise related crimes through detection, prevention, investigation and prosecution of offences under the law",
+        "item3": "Prevention of illicit trafficking in Narcotic Drugs and Psychotropic substances under N. D. P. S. Act, 1985."
+      }
+    },
+    "footer": {
+      "copyright": "Copyright © 2024 Government of Andhra Pradesh.",
+      "poweredBy": "Powered by"
+    },
+    "topBar": {
+      "email": "Email",
+      "phone": "Phone",
+      "openHours": "Open Hours",
+      "departmentComplaintTrack": "Department / Complaint / Track"
+    },
+    "login": {
+    "complaintId": "Complaint ID",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "loginButton": "Login",
+    "poweredBy": "Powered by RIDHITEK"
+  }
+  
+}

@@ -1,0 +1,35 @@
+<section class="sectionNav">
+    <diV class="navMain">
+        <div class="leftnav">
+            <div class="logo">
+                <img src="/assets/exciselogo.png" alt="Logo">
+            </div>
+            <div class="stateName">
+                <h2>EXCISE DEPARTMENT</h2>
+            </div>
+        </div>
+        <div class="rightnav ">
+            <a routerLink="/home" class="navLinks">HOME</a>
+            <a routerLink="/acts-and-rules" class="navLinks">ACTS & RULES</a>
+            <a routerLink="/dashboard" class="navLinks">DASHBOARD</a>
+            <a routerLink="/contactus" class="navLinks">CONTACT US</a>
+            <a class="login"  mat-button [matMenuTriggerFor]="loginMenu">LOGIN</a>
+        </div>
+        <div class="hamburger" (click)="toggleSideNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </diV>
+    <mat-menu #loginMenu="matMenu">
+        <button mat-menu-item routerLink="/login">User</button>
+        <button mat-menu-item routerLink="/admin-login">Admin</button>
+    </mat-menu>
+    <div class="sideNav" [class.open]="sideNavOpen">
+        <a routerLink="/home" class="navLinks">HOME</a>
+        <a routerLink="/acts-and-rules" class="navLinks">ACTS & RULES</a>
+        <a routerLink="/dashboard" class="navLinks">DASHBOARD</a>
+        <a routerLink="/contactus" class="navLinks">CONTACT US</a>
+        <a class="login" mat-button [matMenuTriggerFor]="loginMenu">LOGIN</a>
+    </div>
+</section>

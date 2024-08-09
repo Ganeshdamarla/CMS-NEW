@@ -1,0 +1,61 @@
+
+<section class="section">
+  <app-navbar></app-navbar>
+<div class="main-agent">
+  <div class="form-container">
+    <div class="form-title-agent">
+      <h1 class="gradient-text">Agent Complaint Form</h1>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-column columnOne">
+          <div class="form-group" *ngFor="let field of leftColumnFields">
+            <div class="input-container">
+              <input *ngIf="field.type !== 'dropdown' && field.type !== 'textarea' && field.type !== 'file' && field.type !== 'readonly'"
+                     [name]="field.name"
+                     [type]="field.type"
+                     [readonly]="field.readonly"
+                     [disabled]="field.disabled"
+                     [(ngModel)]="formData[field.name]"
+                     (focus)="onFocus(field.name)"
+                     (blur)="onBlur(field.name)"
+                     [ngClass]="{'active': isActive(field.name)}">
+              <select *ngIf="field.type === 'dropdown'"
+                      [name]="field.name"
+                      [disabled]="field.disabled"
+                      [(ngModel)]="formData[field.name]"
+                      (focus)="onFocus(field.name)"
+                      (blur)="onBlur(field.name)"
+                      [ngClass]="{'active': isActive(field.name)}">
+                <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+              </select>
+              <textarea *ngIf="field.type === 'textarea'"
+                        [name]="field.name"
+                        [readonly]="field.readonly"
+                        [disabled]="field.disabled"
+                        [(ngModel)]="formData[field.name]"
+                        (focus)="onFocus(field.name)"
+                        (blur)="onBlur(field.name)"
+                        [ngClass]="{'active': isActive(field.name)}"></textarea>
+              <input *ngIf="field.type === 'file'"
+                     type="file"
+                     [name]="field.name"
+                     (change)="onFileChange($event, field.name)"
+                     (focus)="onFocus(field.name)"
+                     (blur)="onBlur(field.name)"
+                     [ngClass]="{'active': isActive(field.name)}">
+              <div *ngIf="field.type === 'readonly'">{{ field.value }}</div>
+              <label [ngClass]="{'active': isActive(field.name)}">{{ field.label }} <span *ngIf="!field.readonly && !field.disabled" class="star">*</span></label>
+              <small class="error-message" *ngIf="errors[field.name]">
+                {{ errors[field.name] }}
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="Agent-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>
+</section>

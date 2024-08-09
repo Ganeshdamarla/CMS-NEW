@@ -1,0 +1,31 @@
+<!-- chatbot.component.html -->
+<div class="chatbot-wrapper">
+  <div class="chatbot-name">Hi, Chitti here to assist you!</div>
+  <div class="chatbot-icon" (click)="toggleChat()">💬</div>
+</div>
+
+<div class="chatbot-modal" *ngIf="isOpen">
+  <div class="chatbot-header">
+      <span>Chitti</span>
+      <button (click)="toggleChat()">X</button>
+  </div>
+  <div class="chatbot-body">
+      <div class="chat-history">
+          <div *ngFor="let chat of chatHistory" [class]="chat.from">
+              <div class="message">{{ chat.message }}</div>
+          </div>
+      </div>
+      <div class="predefined-questions" *ngIf="showPredefinedQuestions">
+          <div *ngFor="let question of predefinedQuestions" class="predefined-question" (click)="handlePredefinedQuestionClick(question)">
+              {{ question.question }}
+          </div>
+      </div>
+      <div *ngIf="showRegisterComplaintButton">
+          <button class="register-complaint" (click)="registerComplaint()">Register Complaint</button>
+      </div>
+      <div class="chat-input">
+          <input type="text" [(ngModel)]="userInput" placeholder="Type your message here..." />
+          <button (click)="sendMessage()">Send</button>
+      </div>
+  </div>
+</div>

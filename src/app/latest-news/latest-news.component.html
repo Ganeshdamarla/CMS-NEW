@@ -1,0 +1,24 @@
+<section class="sectionNews">
+<div class="main-latest">
+  <diV class="image-ap">
+    <img class="focus-image" style="width: 95%;" src="/assets/apmap.png">
+  </diV>
+    <div class="latest-news-container hover-focus">
+      <div class="latest-news-header">
+        <h1 class="animate-bounce">LATEST NEWS</h1>
+      </div>
+      <div class="latest-news-body">
+        <div class="news-list" id="newsList">
+          <ul>
+            <li *ngFor="let news of latestNews">
+              <a href="{{ news.url }}" target="_blank">
+                <span class="icon"><i class="fas fa-hand-point-right"></i></span>
+                {{ news.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

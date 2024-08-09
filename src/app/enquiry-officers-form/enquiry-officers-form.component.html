@@ -1,0 +1,164 @@
+<section class="section">
+  <app-navbar></app-navbar>
+<div class="main-eo">
+    <div class="form-container-eo">
+      <div class="form-title-eo">
+        <h1>Enquiry Officers Form</h1>
+      </div>
+
+      <div class="top-data-display control-room-data">
+        <div>
+        <p><strong>Complaint ID:</strong> {{ complaintForm.get('complaintId')?.value }}</p>
+        <p><strong>Complaint Details:</strong> {{ complaintForm.get('complaintDetails')?.value }}</p>
+        <p><strong>Complaint Type:</strong> {{ complaintForm.get('complaintType')?.value }}</p>
+        <p><strong>Attachments:</strong> {{ complaintForm.get('attachments')?.value }}</p>
+      </div>
+        <div>
+        <p><strong>Mandal:</strong> {{ complaintForm.get('mandal')?.value }}</p>
+        <p><strong>Village:</strong> {{ complaintForm.get('village')?.value }}</p>
+        <p><strong>Received Time Stamp:</strong> {{ complaintForm.get('receivedTimeStamp')?.value }}</p>
+      </div>
+    </div>
+
+      <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+        <div class="form-row-eo">
+          <div class="form-column-eo columnOne-eo">
+            <div *ngFor="let field of rightColumnFields" class="form-group-eo">
+              <div class="input-container-eo">
+                <input *ngIf="field.type !== 'dropdown' && field.type !== 'button' && field.type !== 'readonly' && field.type !== 'textarea' && field.type !== 'file'"
+                       [formControlName]="field.name"
+                       [type]="field.type"
+                       [readonly]="field.readonly"
+                       [disabled]="field.disabled"
+                       (focus)="onFocus(field.name)"
+                       (blur)="onBlur(field.name)"
+                       [ngClass]="{'active': isActive(field.name)}">
+                <select *ngIf="field.type === 'dropdown'"
+                        [formControlName]="field.name"  
+                        (focus)="onFocus(field.name)"
+                        (blur)="onBlur(field.name)"
+                        [ngClass]="{'active': isActive(field.name)}">
+                  <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+                </select>
+                <textarea *ngIf="field.type === 'textarea'"
+                          [formControlName]="field.name"
+                          (focus)="onFocus(field.name)"
+                          (blur)="onBlur(field.name)"
+                          [ngClass]="{'active': isActive(field.name)}"
+                          rows="1"></textarea>
+                <input *ngIf="field.type === 'file'"
+                       class="fileInput"
+                       type="file"
+                       [formControlName]="field.name"
+                       (focus)="onFocus(field.name)"
+                       (blur)="onBlur(field.name)"
+                       [ngClass]="{'active': isActive(field.name)}">
+                <button *ngIf="field.type === 'button'" type="button" (click)="showPopup()" class="AtrButton-eo">{{ field.label }}<span *ngIf="!field.readonly && !field.disabled" class="star">*</span></button>
+        
+                <div *ngIf="field.type === 'readonly' && field.value">{{ field.value }}</div>
+                <label *ngIf="field.type!=='button'" [ngClass]="{'active': isActive(field.name)}">{{ field.label }} <span *ngIf="!field.readonly && !field.disabled" class="star">*</span></label>
+
+                <small class="error-message" *ngIf="complaintForm.get(field.name)?.invalid && complaintForm.get(field.name)?.touched">
+                  Please fill in the {{ field.label }} field.
+                </small>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-column-eo">
+            <div *ngFor="let field of rightColumnFields" class="form-group-eo">
+              <div class="input-container-eo">
+                <input *ngIf="field.type !== 'dropdown' && field.type !== 'readonly' && field.type !== 'textarea' && field.type !== 'file'"
+                       [formControlName]="field.name"
+                       [type]="field.type"
+                       [readonly]="field.readonly"
+                       [disabled]="field.disabled"
+                       (focus)="onFocus(field.name)"
+                       (blur)="onBlur(field.name)"
+                       [ngClass]="{'active': isActive(field.name)}">
+                <select *ngIf="field.type === 'dropdown'"
+                        [formControlName]="field.name"
+                        (focus)="onFocus(field.name)"
+                        (blur)="onBlur(field.name)"
+                        [ngClass]="{'active': isActive(field.name)}">
+                  <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+                </select>
+                <textarea *ngIf="field.type === 'textarea'"
+                          [formControlName]="field.name"
+                          (focus)="onFocus(field.name)"
+                          (blur)="onBlur(field.name)"
+                          [ngClass]="{'active': isActive(field.name)}"></textarea>
+                <input *ngIf="field.type === 'file'"
+                       type="file"
+                       [formControlName]="field.name"
+                       (focus)="onFocus(field.name)"
+                       (blur)="onBlur(field.name)"
+                       [ngClass]="{'active': isActive(field.name)}">
+                <div *ngIf="field.type === 'readonly' && field.value">{{ field.value }}</div>
+                <label [ngClass]="{'active': isActive(field.name)}">{{ field.label }} <span *ngIf="!field.readonly && !field.disabled" class="star">*</span></label>
+                <small class="error-message" *ngIf="complaintForm.get(field.name)?.invalid && complaintForm.get(field.name)?.touched">
+                  Please fill in the {{ field.label }} field.
+                </small>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <button type="submit" class="btn-eo">Submit</button>
+      </form>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</section>
+  <!-- Popup Window -->
+  <div class="popup-window-eo" *ngIf="isPopupVisible">
+    <div class="popup-content-eo">
+      <div class="form-title-eo">
+        <h1>ATR Preliminary Details</h1>
+      </div>
+      <form [formGroup]="popupForm" (ngSubmit)="onPopupSubmit()">
+        <div class="form-row-eo">
+          <div class="form-column-eo columnOne-eo">
+            <div class="form-group-eo" *ngFor="let field of popupWindowFields">
+              <div class="input-container-eo" *ngIf="!['CrimeLocation', 'Cr', 'Casesbooked', 'US', 'PersonsArrested', 'ComplaintSource', 'ContrabandValue'].includes(field.name)|| showConditionalFields">
+                <input *ngIf="field.type !== 'dropdown' && field.type !== 'readonly' && field.type !== 'textarea' && field.type !== 'file'"
+                       [formControlName]="field.name"
+                       [type]="field.type"
+                       [readonly]="field.readonly"
+                       [disabled]="field.disabled"
+                       (focus)="onFocus(field.name)"
+                       (blur)="onBlur(field.name)"
+                       [ngClass]="{'active': isActive(field.name)}">
+                <select *ngIf="field.type === 'dropdown'"
+                        [formControlName]="field.name"  
+                        (focus)="onFocus(field.name)"
+                        (blur)="onBlur(field.name)"
+                        [ngClass]="{'active': isActive(field.name)}">
+                  <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+                </select>
+                <textarea *ngIf="field.type === 'textarea'"
+                          [formControlName]="field.name"
+                          (focus)="onFocus(field.name)"
+                          (blur)="onBlur(field.name)"
+                          [ngClass]="{'active': isActive(field.name)}"></textarea>
+                <input *ngIf="field.type === 'file'"
+                       type="file"
+                       [formControlName]="field.name"
+                       (focus)="onFocus(field.name)"
+                       (blur)="onBlur(field.name)"
+                       [ngClass]="{'active': isActive(field.name)}">
+                <div *ngIf="field.type === 'readonly' && field.value">{{ field.value }}</div>
+                <label [ngClass]="{'active': isActive(field.name)}">{{ field.label }} <span *ngIf="!field.readonly && !field.disabled" class="star">*</span></label>
+                <small class="error-message" *ngIf="popupForm.get(field.name)?.invalid && popupForm.get(field.name)?.touched">
+                  Please fill in the {{ field.label }} field.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popupBtns-eo">
+          <button type="submit">Submit</button>
+          <button type="button" (click)="hidePopup()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,65 @@
+<section class="section">
+  <app-navbar></app-navbar>
+  <div class="agentMain">
+<div class="titleAgent">
+    <h1>AGENT DASHBOARD</h1>
+  </div>
+  
+  <div class="statusButton">
+    <!-- <button class="btns-agent-home" (click)="showTasks()">List of Complaints</button> -->
+    <button class="btns-agent-home" (click)="Newcomplaint()">New Complaint</button>
+    <button class="btns-agent-home" (click)="logout()">Logout</button>
+  </div>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>S.NO</th>
+          <th>Complaint ID</th>
+          <th>Complaint details</th>
+          <th>Status</th>
+          <th>Time Stamp</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let complaint of tasks; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ complaint.id }}</td>
+          <td>{{ complaint.details }}</td>
+          <td>{{ complaint.status }}</td>
+          <td>{{ complaint.timestamp }}</td>
+          <td>
+              <span (click)="toggleActionButtons(complaint)" style="cursor: pointer;">
+                  <i class="fa fa-bars"></i> 
+              </span>
+              <div *ngIf="complaint.showActions" class="action-buttons">
+                  <button (click)="assignTask(complaint)">Assign</button>
+                  <!-- <button class="delete-button" (click)="deleteTask(complaint)">Delete</button> -->
+                  <button class="view-button" (click)="viewTask(complaint)">View</button>
+              </div>
+          </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="modalVisible && selectedTask" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Complaint Details</h2>
+      <div>
+        <p><strong>Complaint ID:</strong> {{ selectedTask.id }}</p>
+        <p><strong>Complaint details:</strong> {{ selectedTask.details }}</p>
+        <p><strong>Status:</strong> {{ selectedTask.status }}</p>
+        <p><strong>Timestamp:</strong> {{ selectedTask.timestamp }}</p>
+      </div>
+      <div class="statusBtn">
+        <button (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <app-footer></app-footer>
+</section>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  background: #eee;
+  width: 100%;
+  /* height: 100vh;  */
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+@media(max-width:778px){
+    .darker {
+  position: fixed;
+  top: 40% !important;
+  left: -10%;
+  width: 160% !important;
+  height: 185% !important;
+  background: #2F174F!important;
+  -webkit-transform: rotate(70deg) !important; 
+          transform: rotate(70deg) !important;
+          z-index: -1000;
+          
+}
+}
+@media(max-width:1100px){
+    .MainComplaintForm{
+  
+    margin: 70px 150px !important;
+}
+}
+@media(max-width:900px){
+    .MainComplaintForm{
+   
+    margin: 70px 100px !important;
+}
+}
+@media(max-width:800px){
+    .MainComplaintForm{
+   
+    margin: 70px auto !important;
+}
+}
+
+.darker {
+  position: fixed;
+  top: 50%;
+  left: -10%;
+  width: 150%;
+  height: 150%;
+  background: #2F174F;
+  -webkit-transform: rotate(150deg);
+          transform: rotate(150deg);
+          z-index: -1000;
+}
+.MainComplaintForm{
+    background-color: #ffffff;
+    margin: 70px 250px;
+    padding-block: 30px;
+    width: 100%;
+    
+}
+h1, p {
+  margin: 1em auto;
+  text-align: center;
+}
+
+form {
+    width: 60vw;
+        max-width: 500px;
+        min-width: 300px;
+        margin: 0 auto;
+    padding-bottom: 2em;
+}
+
+fieldset {
+  border: none;
+	padding: 2rem 0;
+}
+
+fieldset:not(:last-of-type) {
+  border-bottom: 3px solid #3b3b4f;
+}
+
+label {
+  display: block;
+	margin: 1rem 0;
+}
+.DetailsHead{
+    display: block;
+	margin: 1rem 0;
+    /* color: red; */
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+input,
+textarea{
+  margin: 10px 0 0 0;
+  width: 100%;
+  min-height: 2.5em;
+}
+select {
+  margin: 10px 0 0 0;
+  width: 100%;
+  min-height: 3em;
+}
+
+input, textarea {
+  /* background-color: #0a0a23;
+  border: 1px solid #0a0a23; */
+  color: #ffffff;
+}
+
+.inline {
+  width: unset;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 1em auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color: #2F174F;
+  border-color: white;
+  min-width: 300px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  padding: 1px 2px;
+}
+
+a {
+  color: #dfdfe2;
+}
+span{
+    color: red;
+}
+
+    </style>
+</head>
+<body>
+    <div class="darker">&nbsp;</div>
+    <div class="MainComplaintForm">
+        <h1>Complaint Register</h1>
+    <p>Please fill out this form with the required information</p>
+    <form action=''>
+      <!-- <fieldset > -->
+        <label class="DetailsHead">Personal Details</label>
+        <label>Name <span>*</span><input type="text" name="first-name" required /></label>
+        <label>Mobile <span>*</span><input type="text" name="last-name" required /></label>
+        <label>Aadhar Number <span>*</span><input type="email" name="email" required /></label>
+        <label class="DetailsHead">Complaint Details</label>
+        <label>District <span>*</span>
+            <select name="referrer">
+              <option value="">(select one)</option>
+              <option value="1">freeCodeCamp News</option>
+              <option value="2">freeCodeCamp YouTube Channel</option>
+              <option value="3">freeCodeCamp Forum</option>
+              <option value="4">Other</option>
+            </select>
+          </label>
+          <label>Mandal <span>*</span>
+            <select name="referrer">
+              <option value="">(select one)</option>
+              <option value="1">freeCodeCamp News</option>
+              <option value="2">freeCodeCamp YouTube Channel</option>
+              <option value="3">freeCodeCamp Forum</option>
+              <option value="4">Other</option>
+            </select>
+          </label>
+          <label>Village <span>*</span>
+            <select name="referrer">
+              <option value="">(select one)</option>
+              <option value="1">freeCodeCamp News</option>
+              <option value="2">freeCodeCamp YouTube Channel</option>
+              <option value="3">freeCodeCamp Forum</option>
+              <option value="4">Other</option>
+            </select>
+          </label>
+        
+      <!-- </fieldset> -->
+      <!-- <fieldset>
+        <label><input type="radio" name="account-type" class="inline" /> Personal Account</label>
+        <label><input type="radio" name="account-type" class="inline" /> Business Account</label>
+        <label>
+          <input type="checkbox" name="terms" class="inline" required /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
+			  </label>
+      </fieldset> -->
+      <!-- <fieldset> -->
+        <label>Compalaint Details <span>*</span> 
+            <textarea name="bio" rows="3" cols="30" placeholder="I like coding on the beach..."></textarea>
+                </label>
+        <label>Attachment <span>*</span> <input type="file" name="file" /></label>
+       
+       
+        
+      <!-- </fieldset> -->
+      <input type="submit" value="Submit" />
+    </form>
+    </div>
+</body>
+</html>

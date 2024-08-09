@@ -1,0 +1,60 @@
+<section class="featuresdiv">
+<section class="features">
+    <h2>Features</h2>
+    <div class="card-container">
+      <div *ngFor="let card of cards" class="card" [@cardAnimation]="'in'">
+        <div class="card-icon"><i class="fa {{card.icon}}"></i></div>
+        <div class="card-content">
+          <h3>{{card.title}}</h3>
+          <p>{{card.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="statistics">
+    <h2>Statistics</h2>
+    <div class="card-container">
+      <div class="card" [@cardAnimation]="'in'">
+        <div class="card-content">
+          <h3>1,500+</h3>
+          <p>Complaints Filed</p>
+        </div>
+      </div>
+      <div class="card" [@cardAnimation]="'in'">
+        <div class="card-content">
+          <h3>1,200+</h3>
+          <p>Resolved Complaints</p>
+        </div>
+      </div>
+      <div class="card" [@cardAnimation]="'in'">
+        <div class="card-content">
+          <h3>300+</h3>
+          <p>Pending Complaints</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1</h3>
+        <p>Submit your complaint through our online form.</p>
+      </div>
+      <div class="step" (click)="toggleStep(2)">
+        <h3>Step 2</h3>
+        <p>Our team reviews and assigns your complaint to the relevant department.</p>
+      </div>
+      <div class="step" (click)="toggleStep(3)">
+        <h3>Step 3</h3>
+        <p>Receive updates and track the progress of your complaint.</p>
+      </div>
+      <div class="step" (click)="toggleStep(4)">
+        <h3>Step 4</h3>
+        <p>Your complaint is resolved, and you receive a notification.</p>
+      </div>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,37 @@
+<section class="section">
+  <app-navbar></app-navbar>
+  <div class="main">
+    <div class="login1">
+      <div class="login-2">
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="logo1">
+            <img class="logoimg1" src="../../../../assets/logo.png" alt="logo" />
+          </div>
+          <div class="flex-column">
+            <label for="complaintId">Complaint ID</label>
+          </div>
+          <div class="inputForm">
+            <input type="text" class="input" id="complaintId" formControlName="complaintId" placeholder="Enter your Complaint ID">
+          </div>
+          <div class="error-message" *ngIf="loginForm.get('complaintId')?.touched && loginForm.get('complaintId')?.invalid">
+            <div *ngIf="loginForm.get('complaintId')?.errors?.['required']">Complaint ID is required</div>
+          </div>
+  
+          <div class="flex-column">
+            <label for="password">Password</label>
+          </div>
+          <div class="inputForm">
+            <input type="password" class="input" id="password" formControlName="password" placeholder="Enter your Password">
+          </div>
+          <div class="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+            <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+          </div>
+  
+  
+          <button type="submit" class="button-submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</section>
